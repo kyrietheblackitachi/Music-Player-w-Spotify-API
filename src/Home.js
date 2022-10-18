@@ -6,7 +6,7 @@ import { Outlet } from 'react-router-dom';
 import './style.css'
 
 
-function Home({isLoading,input,activeBar,setActiveBar,fetchSearchData,fetchAlbumData,fetchArtistData,fetchTrackData}) {
+function Home({setInput,isLoading,input,activeBar,setActiveBar,fetchSearchData,fetchAlbumData,fetchArtistData,fetchTrackData}) {
 
  
   return (
@@ -15,7 +15,7 @@ function Home({isLoading,input,activeBar,setActiveBar,fetchSearchData,fetchAlbum
           <Navigation activeBar={activeBar} setActiveBar={setActiveBar}/>
         </Box>  
         <Box  className='display'>
-          <Search isLoading={isLoading}input={input} activeBar={activeBar} setActiveBar={setActiveBar} fetchSearchData={fetchSearchData}fetchAlbumData={fetchAlbumData }fetchArtistData={fetchArtistData}fetchTrackData={fetchTrackData}/>
+          <Search isLoading={isLoading}setInput={setInput}input={input} activeBar={activeBar} setActiveBar={setActiveBar} fetchSearchData={fetchSearchData}fetchAlbumData={fetchAlbumData }fetchArtistData={fetchArtistData}fetchTrackData={fetchTrackData}/>
           <Box className='outlet-box'>
             <Outlet/>
           </Box>

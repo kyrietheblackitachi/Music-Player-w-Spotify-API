@@ -1,16 +1,11 @@
 import React from "react";
-import { Box } from "@mui/system";
 import Home from "./Home";
 import {Route,Routes} from "react-router-dom";
 // component imports//
 import Albums from "./components/Albums";
 import Artists from "./components/Artists";
-import Extras from "./components/Extras";
-import Episodes from "./components/Episodes";
-import Players from "./components/Players";
 import Playlists from "./components/Playlists";
 import Tracks from "./components/Tracks";
-import Users from "./components/Users";
 import Explore from "./components/Explore";
 import Recent from "./components/Recent";
 import Favourite from "./components/Favourite";
@@ -20,35 +15,38 @@ import ExploreArtists from "./ExploreComponents/ExploreArtists";
 import ExploreEpisodes from "./ExploreComponents/ExploreEpisodes";
 import ExplorePlaylist from "./ExploreComponents/ExplorePlaylist";
 import ExplorePodCast from "./ExploreComponents/ExplorePodCast";
-import ExploreTracks from "./ExploreComponents/ExploreTracks";
+
 // fetch imports//
-import {fetchArtist,fetchArtistOverview,fetchArtistSingles,fetchArtistDiscography,fetchArtistAlbums,fetchArtistAppearsOn,fetchArtistDiscoveredOn,fetchArtistFeaturing,fetchArtistRelated,options} from './fetchData'
+import {fetchArtist,fetchArtistOverview,fetchArtistSingles,fetchArtistAlbums,options} from './fetchData'
 import {fetchAlbums,fetchAlbumTracks,fetchAlbumMetaData} from './fetchData'
-import {fetchTracks,fetchTrackCredit,fetchTrackLyrics} from './fetchData'
-import {fetchGetPlaylist,fetchPlaylistTracks} from './fetchData'
-import {fetchUserProfile,fetchUserFollowers} from './fetchData'
-import {fetchRadioPlaylist} from './fetchData'
+import {fetchTracks} from './fetchData'
 import {fetchSearch} from './fetchData'
 // hooks //
-import { useState,useEffect,useCallback } from 'react';
+import { useState,useEffect } from 'react';
 
 function App() {
   //useState
   const[explore,setExplore]=useState(false)
   const[artists,setArtists]=useState(false)
   const[track,setTrack]=useState(false)
-  const[input,setInput]= useState('drake')
+  const[input,setInput]= useState('')
   const[isLoading,setIsLoading]=useState(true)
   const [activeBar, setActiveBar]=useState('1')
-  //useEffect
+  const [id, setID]=useState('')
   useEffect(()=>{
-    //search Data
     fetchSearchData()
     fetchArtistData()
     fetchAlbumData()
     fetchTrackData()
-  },[input])
-
+    ID()
+  },[])
+  //---------------fetchID=========//
+  const ID=async()=>{
+    const getID=await fetch('https://spotify81.p.rapidapi.com/artist_related?id=2w9zwq3AktTeYYMuhMjju8',options)
+    const response= await getID.json()
+    setID(response)
+    console.log(id)
+  }
    //=====================fetching data================//
     const fetchSearchData=async()=>{
       const search = await fetchSearch(`https://spotify23.p.rapidapi.com/search/?q=${input}%3E&type=multi&offset=0&limit=10&numberOfTopResults=5`,options)
@@ -57,10 +55,11 @@ function App() {
     }
     
     const fetchArtistData=async()=>{
-      const artists = await fetchArtist('https://spotify23.p.rapidapi.com/artists/?ids=2w9zwq3AktTeYYMuhMjju8',options)
-      const artistOverview = await fetchArtistOverview('https://spotify23.p.rapidapi.com/artist_overview/?id=2w9zwq3AktTeYYMuhMjju8',options)
-      const artistSingles = await fetchArtistSingles('https://spotify23.p.rapidapi.com/artist_singles/?id=2w9zwq3AktTeYYMuhMjju8&offset=0&limit=20',options)
-      const artistAlbums = await fetchArtistAlbums('https://spotify23.p.rapidapi.com/artist_albums/?id=2w9zwq3AktTeYYMuhMjju8&offset=0&limit=100',options)
+     
+      const artists = await fetchArtist(`https://spotify23.p.rapidapi.com/artists/?ids=${id}`,options)
+      const artistOverview = await fetchArtistOverview(`https://spotify23.p.rapidapi.com/artist_overview/?id=${id}`,options)
+      const artistSingles = await fetchArtistSingles(`https://spotify23.p.rapidapi.com/artist_singles/?id=${id}&offset=0&limit=20`,options)
+      const artistAlbums = await fetchArtistAlbums(`https://spotify23.p.rapidapi.com/artist_albums/?id=${id}&offset=0&limit=100`,options)
       setArtists({artists,artistOverview,artistSingles,artistAlbums}) 
       setIsLoading(false) 
     }
@@ -71,9 +70,8 @@ function App() {
       return[albums,albumTracks,albumMetaData]
     }
     const fetchTrackData=async()=>{
-      const tracks = await fetchTracks('https://spotify23.p.rapidapi.com/tracks/?ids=4WNcduiCmDNfmTEz7JvmLv',options)
-      const tracksLyrics = await fetchTrackLyrics('https://spotify23.p.rapidapi.com/track_lyrics/?id=1brwdYwjltrJo7WHpIvbYt',options)
-      setTrack({tracks,tracksLyrics})
+      const tracks = await fetchTracks('https://spotify81.p.rapidapi.com/top_20_by_monthly_listeners',options)
+      setTrack({tracks})
       setIsLoading(false) 
     }
     // const fetchPlaylistData=async()=>{
@@ -85,17 +83,16 @@ function App() {
 
 
       <Routes>
-        <Route path='/' element= {<Home activeBar={activeBar} setActiveBar={setActiveBar} fetchSearchData={fetchSearchData} fetchArtistData={fetchArtistData} fetchAlbumData={fetchAlbumData} fetchTrackData={fetchTrackData} isLoading={isLoading}input={input}/>}>
+        <Route path='/' element= {<Home activeBar={activeBar} setActiveBar={setActiveBar} fetchSearchData={fetchSearchData} fetchArtistData={fetchArtistData} fetchAlbumData={fetchAlbumData} fetchTrackData={fetchTrackData} isLoading={isLoading}input={input} setInput={setInput}/>}>
           <Route path='/' element={<Explore/>}/>
-          //explore Routes//
+
               <Route path="explore/albums" element={!isLoading&&<ExploreAlbums  explore={explore}/>}/>
               <Route path="explore/artists" element={!isLoading&&<ExploreArtists  explore={explore}/>}/>
               <Route path="explore/episodes" element={!isLoading&&<ExploreEpisodes explore={explore}/>}/>
               <Route path="explore/playlists" element={!isLoading&&<ExplorePlaylist explore={explore}/>}/>
               <Route path="explore/podcasts" element={!isLoading&&<ExplorePodCast explore={explore}/>}/> 
-              <Route path="explore/tracks" element={!isLoading&&<ExploreTracks explore={explore}/>}/>
           <Route path='albums' element={!isLoading&&<Albums artists={artists} />}/>
-          <Route path='artists' element={!isLoading&&<Artists artists={artists}/>}/>
+          <Route path='artists' element={!isLoading&&<Artists artists={artists} input={input} setID={setID}/>}/>
           <Route path='tracks' element={!isLoading&&<Tracks track={track}/>}/>
           <Route path='recent' element={!isLoading&&<Recent/>}/>
           <Route path='favourite' element={!isLoading&&<Favourite/>}/>

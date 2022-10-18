@@ -1,6 +1,6 @@
-import React from 'react'
+import { useEffect } from 'react';
 import { Box,Card,Grid } from '@mui/material'
-const Artists = ({artists}) => {
+const Artists = ({artists,setID,input}) => {
   const artist=artists.artists
   const artistOverview=artists.artistOverview
   const artistSingles=artists.artistSingles
@@ -19,9 +19,6 @@ const Artists = ({artists}) => {
         <h4>No. of Albums Released:{artistOverview.data.artist.discography.albums.items.length}</h4>
         </Box>
         <h1>Overview</h1>
-        <h4>{artistOverview.data.artist.uri}</h4>
-        <h3>Biography</h3>
-        <p>{artistOverview.data.artist.profile.biography.text}</p>
   
       </Card>
       <Box>
@@ -31,7 +28,6 @@ const Artists = ({artists}) => {
           <Grid item sm={4} xs={6} md={3}>
           <Card className='singles-card'>
             <img src={singles.releases.items[0].coverArt.sources[0].url}/>
-            <h4>{singles.releases.items[0].uri}</h4>
             <h4>Name-{singles.releases.items[0].name}</h4>
             <h4>Year-{singles.releases.items[0].date.year}</h4>
             <h4>Tracks No.-{singles.releases.items[0].tracks.totalCount}</h4>
@@ -47,7 +43,6 @@ const Artists = ({artists}) => {
           <Grid item  sm={4} xs={6} md={3}>
           <Card  className='albums-card'>
             <img src={album.releases.items[0].coverArt.sources[2].url}/>
-            <h4>{album.releases.items[0].uri}</h4>
             <h4>Name-{album.releases.items[0].name}</h4>
             <h4>Year-{album.releases.items[0].date.year}</h4>
             <h4>Tracks No.-{album.releases.items[0].tracks.totalCount}</h4>

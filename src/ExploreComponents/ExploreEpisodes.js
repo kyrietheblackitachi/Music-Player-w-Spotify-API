@@ -14,7 +14,6 @@ const ExploreEpisodes = ({explore}) => {
             <Grid item   xs={6} sm={4} className='grid-item'>
               <Card className='explore-albums'>
               <img src={item.data.coverArt.sources[2].url}/>
-              <a href={item.data.uri}>uri</a>
               <h4>Name:{item.data.name}</h4>
               <h4>Duration:{item.data.duration.totalMilliseconds}</h4>
               <h4>Release Date:{item.data.releaseDate.isoString}</h4>

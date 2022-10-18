@@ -14,10 +14,11 @@ const ExploreArtists = ({explore}) => {
           return(
             <Grid item   xs={6} sm={4} className='grid-item'>
               <Card className='explore-albums'>
-              <div>{item.data.visuals.avatarImage.sources[1].url}</div>
+              <img src={item.data.visuals.avatarImage.sources[0].url}/>
               <a href={item.data.uri}>uri</a>
               <h4>Name:{item.data.profile.name}</h4>
-              </Card>
+
+              </Card> 
           </Grid>
           )
         })

@@ -1,12 +1,12 @@
 import React from 'react'
 import { Box,Card, Grid } from '@mui/material'
-import ExploreAlbums from "../ExploreComponents/ExploreAlbums";
-import ExploreArtists from "../ExploreComponents/ExploreArtists";
-import ExploreEpisodes from "../ExploreComponents/ExploreEpisodes";
-import ExplorePlaylist from "../ExploreComponents/ExplorePlaylist";
-import ExplorePodCast from "../ExploreComponents/ExplorePodCast";
-import ExploreTracks from "../ExploreComponents/ExploreTracks";
-import { Link, Outlet } from 'react-router-dom';
+// import ExploreAlbums from "../ExploreComponents/ExploreAlbums";
+// import ExploreArtists from "../ExploreComponents/ExploreArtists";
+// import ExploreEpisodes from "../ExploreComponents/ExploreEpisodes";
+// import ExplorePlaylist from "../ExploreComponents/ExplorePlaylist";
+// import ExplorePodCast from "../ExploreComponents/ExplorePodCast";
+// import ExploreTracks from "../ExploreComponents/ExploreTracks";
+import { Link } from 'react-router-dom';
 
 const Explore = ({explore}) => {
   // const{albums,artists,episodes,genres,playlists,podcasts,topResults,tracks,users}=explore
@@ -20,7 +20,6 @@ const Explore = ({explore}) => {
         <Grid  xs={6}  sm={4}item><Link to='/explore/episodes'><Card className='explore-item' ><h2>Episodes</h2></Card></Link></Grid>
         <Grid  xs={6} sm={4} item><Link to='/explore/playlists'><Card className='explore-item'><h2>Playlists</h2></Card></Link></Grid>
         <Grid  xs={6}  sm={4}item><Link to='/explore/podcasts'><Card className='explore-item'><h2>Podcasts</h2></Card></Link></Grid>
-        <Grid  xs={6} sm={4} item><Link to='/explore/tracks'><Card className='explore-item'><h2>Tracks</h2></Card></Link></Grid>
       </Grid>
     </Box>
 

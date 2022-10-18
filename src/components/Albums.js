@@ -9,8 +9,7 @@ const Albums = ({artists}) => {
      return(
       <Grid item  sm={4} xs={6} md={3}>
       <Card  className='albums-card'>
-        <img src={album.releases.items[0].coverArt.sources[2].url}/>
-        <h4>{album.releases.items[0].uri}</h4>
+        <img src={album.releases.items[0].coverArt.sources[2].url} alt='coverart'/>
         <h4>Name-{album.releases.items[0].name}</h4>
         <h4>Year-{album.releases.items[0].date.year}</h4>
         <h4>Tracks No.-{album.releases.items[0].tracks.totalCount}</h4>
