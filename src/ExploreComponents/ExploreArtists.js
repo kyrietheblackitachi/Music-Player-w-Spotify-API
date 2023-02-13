@@ -1,10 +1,14 @@
 import React from 'react'
-import { Box,Grid,Card,Stack } from '@mui/material';
+import { Box,Grid,Card } from '@mui/material';
+import { useEffect } from 'react';
 
 
 const ExploreArtists = ({explore}) => {
-
   const{items}=explore.artists
+  useEffect(()=>{
+
+
+  })
 
   return (
     <Box>
@@ -14,8 +18,7 @@ const ExploreArtists = ({explore}) => {
           return(
             <Grid item   xs={6} sm={4} className='grid-item'>
               <Card className='explore-albums'>
-              <img src={item.data.visuals.avatarImage.sources[0].url}/>
-              <a href={item.data.uri}>uri</a>
+              {<img src={item.data.visuals.avatarImage?.sources[0].url}/>}
               <h4>Name:{item.data.profile.name}</h4>
 
               </Card> 

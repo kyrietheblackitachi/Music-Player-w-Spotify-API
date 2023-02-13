@@ -2,12 +2,11 @@ import { TextField,Stack,Box} from "@mui/material";
 // import React,{useState} from 'react'
 import search from '../images/search.png'
 
-const Search = ({setInput,isLoading,input,activeBar,setActiveBar,fetchSearchData,fetchAlbumData,fetchArtistData,fetchTrackData}) => {
+const Search = ({setInput,isLoading,input,activeBar,setActiveBar,fetchSearchData,fetchAlbumData,fetchArtistData}) => {
   const handleSearch=()=>{
     if(activeBar==='1'){fetchSearchData()}
-    if(activeBar==='2'){fetchAlbumData()}
-    if(activeBar==='3'){fetchArtistData()}
-    if(activeBar==='6'){fetchSearchData()}
+    if(activeBar==='2'||activeBar==='3'||activeBar==='4'){fetchArtistData()}
+    if(activeBar==='5'){fetchSearchData()}
     setInput('')
   }
 
