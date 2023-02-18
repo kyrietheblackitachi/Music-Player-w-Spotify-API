@@ -6,7 +6,7 @@ const ExploreAlbums = ({explore}) => {
 
   const{items}=explore.albums
   return (
-    <Box>
+    <Box className='explore-album'>
       <h1>Explore Albums</h1>
       <Grid container rowSpacing={10} columnSpacing={3} className='explore-album-grid'>
         {items.map((item)=>{

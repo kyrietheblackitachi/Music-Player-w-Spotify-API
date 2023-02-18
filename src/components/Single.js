@@ -1,10 +1,11 @@
 import React from 'react'
 import { Box,Grid,Card } from '@mui/material'
-const Single = ({artists,setID,input}) => {
+const Single = ({artists,setID,input,isLoading}) => {
   const artistSingles=artists.artistSingles
   return (
-    <Box>
+    <Box className='nav-single'>
         <h2>Singles</h2>
+        {isLoading&&<Box>
         <Grid container rowSpacing={2} columnSpacing={2}>{artistSingles?.data.artist.discography.singles.items.map((singles)=>{
           return(
           <Grid item sm={4} xs={6} md={3}>
@@ -17,6 +18,7 @@ const Single = ({artists,setID,input}) => {
           </Grid>)
         })}
         </Grid>
+        </Box>}
     </Box>
   )
 }

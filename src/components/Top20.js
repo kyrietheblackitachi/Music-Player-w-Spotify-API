@@ -1,10 +1,11 @@
 import React from 'react'
 import { Box,Card,Grid } from '@mui/material'
-const Top20 = ({track}) => {
+const Top20 = ({track,isLoading}) => {
   const tracks=track.tracks
   console.log(track)
   return (
-    <Box>
+    <Box className='nav-top-20'>
+      {isLoading&&<Box>
       <Grid container rowSpacing={2} columnSpacing={2}>{tracks?.map((item)=>{
         return(
           <Grid item  sm={4} xs={6} md={3}>
@@ -18,6 +19,7 @@ const Top20 = ({track}) => {
           )
         })}
       </Grid>  
+      </Box>}
     </Box>
   )
 }

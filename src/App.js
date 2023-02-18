@@ -76,13 +76,13 @@ function App() {
               <Route path="explore/episodes" element={!isLoading&&<ExploreEpisodes explore={explore}/>}/>
               <Route path="explore/playlists" element={!isLoading&&<ExplorePlaylist explore={explore}/>}/>
               <Route path="explore/podcasts" element={!isLoading&&<ExplorePodCast explore={explore}/>}/> 
-          <Route path='albums' element={!isLoading&&<Albums artists={artist} />}/>
-          <Route path='single' element={!isLoading&&<Single artists={artist} />}/>
-          <Route path='artists' element={!isLoading&&<Artists artists={artist} input={input} setID={setID}/>}/>
-          <Route path='tracks' element={!isLoading&&<Top20 track={track}/>}/>
-          <Route path='recent' element={!isLoading&&<Recent/>}/>
-          <Route path='favourite' element={!isLoading&&<Favourite/>}/>
-          <Route path='playlist' element={!isLoading&&<Playlists   explore={explore}/>}/>
+          <Route path='albums' element={<Albums artists={artist} isLoading={isLoading}/>}/>
+          <Route path='single' element={<Single artists={artist} isLoading={isLoading}/>}/>
+          <Route path='artists' element={<Artists artists={artist} input={input} setID={setID} isLoading={isLoading}/>}/>
+          <Route path='tracks' element={<Top20 track={track}/>}/>
+          <Route path='recent' element={<Recent/>}/>
+          <Route path='favourite' element={<Favourite isLoading={isLoading}/>}/>
+          <Route path='playlist' element={<Playlists isLoading={isLoading}  explore={explore}/>}/>
         </Route>
       </Routes>
   );

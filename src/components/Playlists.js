@@ -1,10 +1,11 @@
 import React from 'react'
 import { Container,Box} from '@mui/system'
 import {Card, Grid } from '@mui/material'
-const Playlists = ({explore}) => {
+const Playlists = ({explore,isLoading}) => {
   const{items}=explore.playlists
   return (
-    <Box>
+    <Box className='playlist'>
+      {isLoading&&<Box>
       <h1>Explore Playlists</h1>
       <Grid container rowSpacing={10} columnSpacing={3} className='explore-album-grid'>
         {items.map((item)=>{
@@ -19,6 +20,7 @@ const Playlists = ({explore}) => {
         })
         }
       </Grid>
+      </Box>}
     </Box>
   )
 }
