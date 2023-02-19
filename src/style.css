@@ -9,7 +9,10 @@
 }
 /*HOME*/
 .home{
+  background: rgb(26, 24, 24);
   display:flex;
+  flex-direction: column;
+  align-items: center;
 
 }
 .logo{
@@ -28,12 +31,13 @@
 .display{
   width: 100%;;
   display: flex;
-  flex-direction: row;
   align-items: center;
   padding:0 .7em;
   background: rgb(26, 24, 24);
   color:white;
   justify-content:center;
+  flex-direction: column;
+  height:100vh
 
 }
 /*OUTLETBOX*/
@@ -42,91 +46,58 @@
 }
 /*NAVIGATION*/
 .navigation{
-  width:fit-content;
+
+  background: rgb(255, 255, 255);
+  border-radius: 1em;;
   display: flex;
-  flex-direction: column;
-  position: absolute;
-  z-index: 13;
-  top: 0;
-  left: 0;
-  bottom:0;
+  align-items: center;
+  flex-direction: row;
+  padding: 0 .5em;
 }
 .nav-box{
-  display: flex;
-  position: relative;
+
 }
 .nav-box button{
   justify-self: flex-start;
 }
 .current{
   background:rgb(130, 100, 111);
-  border-radius:1em;
 }
 .menus img,.library img,.playlist img{
   width:20px;
   color:white;
-  margin-left:.3em;
 }
 .menus{
-  /* background: rgb(226, 98, 98) !important; */
-  padding:1em !important;
-  border-radius:1em;
-}
-.library{
-  /* background: rgb(208, 117, 216) !important; */
-  padding:1em !important;
-  border-radius:1em;
-}
-.playlist{
-  word-break: keep-all;
-  /* background: rgb(224, 94, 159) !important; */
-  padding:.5em !important;
-  border-radius:1em;
+  display: flex;
 }
 .explore{
-  margin-bottom: .5em;
   background: rgb(114, 47, 47);
-  border-radius: 1em;
 }
 .album{
-  margin-bottom: .5em;
   background: rgb(82, 146, 141);
-  border-radius: 1em;
 }
 .single{
-  margin-bottom: .5em;
   background: rgb(82, 146, 107);
-  border-radius: 1em;
+
 }
 .artist{
-  margin-bottom: .5em;
   background: rgb(82, 94, 146);
-  border-radius: 1em;
 }
 .tracks{
-  margin-bottom: .5em;
   background: rgb(146, 142, 82);
-  border-radius: 1em;
 }
 .categories{
-  margin-bottom: .5em;
   background: rgb(146, 142, 82);
-  border-radius: 1em;
 }
 .recent{
-  margin-bottom: .5em;
   background: rgb(146, 82, 103);
-  border-radius: 1em;
 }
 .favourite{
-  margin-bottom: .5em;
+
   background: rgb(146, 82, 82);
-  border-radius: 1em;
 }
 .add{
-  margin-bottom: .5em;
   background: rgb(144, 82, 146);
-  border-radius: 1em;
 }
 .explore:hover,.albums:hover,.artists:hover,.shows:hover,.tracks:hover,.categories:hover,.recent:hover,.favourite:hover,.add:hover{
   background:rgb(216, 57, 57) !important;
@@ -162,7 +133,6 @@
   display: flex;
   flex-direction: column;
   align-items:center;
-  width:100%;
 }
 .explore-box h1{
   margin-top: 1em;
