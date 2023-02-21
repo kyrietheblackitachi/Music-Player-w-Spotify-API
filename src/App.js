@@ -30,7 +30,7 @@ function App() {
   const[track,setTrack]=useState(false)
   const[input,setInput]= useState('')
   const[isLoading,setIsLoading]=useState(true)
-  const [activeBar, setActiveBar]=useState('1')
+  const [activeBar, setActiveBar]=useState('')
   const [id, setID]=useState('')
   useEffect(()=>{
     fetchSearchData()

@@ -17,16 +17,15 @@ const Navigation = ({activeBar,setActiveBar}) => {
   
   return (
     <Box className='navigation'>
-        {/* <Stack direction='row'className='logo'><img src={tracks} alt='tracks'/><h2>eengle</h2><img className='headphone' src={headphone} alt='headphone'/></Stack> */}
         <List className='menus'>
             <Link to='/'><ListItem  onClick={()=>{setActiveBar('1')}} className={activeBar==='1'?'explore current':'explore'}><img src={explore} alt='explore'/></ListItem></Link>
             <Link to='/albums'><ListItem onClick={()=>{setActiveBar('2')}}className={activeBar==='2'?'album current':'album'}><img src={album} alt='album'/></ListItem></Link>
             <Link to='/single'><ListItem onClick={()=>{setActiveBar('3')}}className={activeBar==='3'?'single current':'single'}><img src={album} alt='album'/></ListItem></Link>
-            <Link to='/artists'><ListItem  onClick={()=>{setActiveBar('4')}}className={activeBar==='4'?'artists current':'artist'}><img src={artists} alt='artist'/></ListItem></Link>
+            <Link to='/artists'><ListItem  onClick={()=>{setActiveBar('4')}}className={activeBar==='4'?'artists current':'artists'}><img src={artists} alt='artist'/></ListItem></Link>
             <Link to='/tracks'><ListItem  onClick={()=>{setActiveBar('5')}}className={activeBar==='5'?'tracks current':'tracks'}><img src={tracks} alt='tracks'/></ListItem></Link>
-            <Link to='/recent'><ListItem className='recent'><img src={recent} alt='recent'/></ListItem></Link>
-            <Link to='/favourite'><ListItem className='favourite'><img src={favorite} alt='favorite'/></ListItem></Link>
-          <Link to='/playlist'><ListItem className='add'><img src={add} alt='add'/></ListItem></Link>
+            <Link to='/recent'><ListItem  onClick={()=>{setActiveBar('6')}}className={activeBar==='6'?'recent current':'recent'}><img src={recent} alt='recent'/></ListItem></Link>
+            <Link to='/favourite'><ListItem  onClick={()=>{setActiveBar('7')}}className={activeBar==='7'?'favorite current':'favorite'}><img src={favorite} alt='favorite'/></ListItem></Link>
+          <Link to='/playlist'><ListItem  onClick={()=>{setActiveBar('8')}}className={activeBar==='8'?'add current':'add'}><img src={add} alt='add'/></ListItem></Link>
         </List>
     </Box>
   )

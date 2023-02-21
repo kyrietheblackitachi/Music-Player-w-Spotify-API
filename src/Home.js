@@ -16,8 +16,7 @@ function Home({setInput,isLoading,input,activeBar,setActiveBar,fetchSearchData,f
             <Navigation activeBar={activeBar} setActiveBar={setActiveBar}/>
             <Search isLoading={isLoading}setInput={setInput}input={input} activeBar={activeBar} setActiveBar={setActiveBar} fetchSearchData={fetchSearchData}fetchAlbumData={fetchAlbumData }fetchArtistData={fetchArtistData}fetchTrackData={fetchTrackData}/>
           </div>
-          <Box className='outlet-box'>
-         
+          <Box className='outlet-box'>         
             <Outlet/>
           </Box>
         </Box> 
